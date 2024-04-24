@@ -17,14 +17,24 @@ function convertToRoman(num) {
             result += symbol;
             num -= value;
         }
+        if (value === 1 && num >= 9) {
+            result = result.slice(0, -2); 
+            result += obj[key - 2][0] + obj[key][0]; 
+            num -= 9;
+        } else if (value === 10 && num >= 90) {
+            result = result.slice(0, -2);
+            result += obj[key - 2][0] + obj[key][0];
+            num -= 90;
+        } else if (value === 100 && num >= 900) {
+            result = result.slice(0, -2);
+            result += obj[key - 2][0] + obj[key][0];
+            num -= 900;
+        }
     }
 
     return result;
 }
 
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
-
-console.log(convertToRoman(36));
-
-// do not edit below this line
+console.log(convertToRoman(36)); 
+console.log(convertToRoman(979)); 
 module.exports = convertToRoman;
