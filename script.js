@@ -17,18 +17,24 @@ function convertToRoman(num) {
             result += symbol;
             num -= value;
         }
-        if (value === 1 && num >= 9) {
-            result = result.slice(0, -2); 
-            result += obj[key - 2][0] + obj[key][0]; 
-            num -= 9;
-        } else if (value === 10 && num >= 90) {
-            result = result.slice(0, -2);
-            result += obj[key - 2][0] + obj[key][0];
-            num -= 90;
-        } else if (value === 100 && num >= 900) {
-            result = result.slice(0, -2);
-            result += obj[key - 2][0] + obj[key][0];
+        if (value === 1000 && num >= 900) {
+            result += 'CM';
             num -= 900;
+        } else if (value === 500 && num >= 400) {
+            result += 'CD';
+            num -= 400;
+        } else if (value === 100 && num >= 90) {
+            result += 'XC';
+            num -= 90;
+        } else if (value === 50 && num >= 40) {
+            result += 'XL';
+            num -= 40;
+        } else if (value === 10 && num >= 9) {
+            result += 'IX';
+            num -= 9;
+        } else if (value === 5 && num >= 4) {
+            result += 'IV';
+            num -= 4;
         }
     }
 
